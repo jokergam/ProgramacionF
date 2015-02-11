@@ -1,0 +1,24 @@
+%Manual de comandos de bash en Linux
+
+%Especifico tipo de documento y el tamaño de letra
+\documentclass[12pt]{article}
+\begin{document}
+%El documento estara en español, usar paquete en español
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+
+%topmatter (titulo, autor, fecha)
+\title{Manual de comandos de bash para Linux}
+\author{Hugo Valenzuela Chaparro}
+\date{\today}
+
+%Resumen del contenido del texto
+\begin{abstract}
+Bash es un interpretador de comandos en Linux, lleva acabo acciones que indican dichos comandos. En este manual se incluye una lista de los mas significativos, con su respectivo ejemplo ilustrativo.
+\end{abstract}
+
+%Inicio del cuerpo del documento
+%\begin{document}
+Prueba de como se compila a PDF
+\end{document}

@@ -1,0 +1,90 @@
+%Manual de comandos de bash en Linux
+
+%Especifico tipo de documento y el tamaño de letra
+\documentclass[notitlepage,12pt]{article}
+
+%El documento estara en español, usar paquete en español
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+%Permite colores
+\usepackage{color}
+%topmatter (titulo, autor, fecha)
+\title{Manual de comandos de bash para Linux}
+\author{Hugo Valenzuela Chaparro}
+\date{\today}
+
+
+
+%Inicio del cuerpo del documento
+\begin{document}
+\begin{abstract}
+\color{blue} Existe otra manera de darle \'ordenes a una computadora sin tener que estar usando el mouse y haciendo muchos clicks, dicha manera es escribiendo e intruduciendo las instrucciones (comandos) con el teclado. Este documento es un manual de comandos de bash, para Linux. La estructura ser\'a comando, descripci\'on y ejemplo.
+\end{abstract}
+
+
+
+\maketitle
+
+%Definicion
+\section{Bash}
+Bash es un intermediario entre el usuario y el sistema operativo, {\color{red} Linux} en este caso. Ejecuta la acci\'on de los comandos que el usuario introduce.
+
+\section{Objetivos}
+\begin{itemize}
+\item Mostrar comandos b\'asicos de Linux.
+\item Servir de consulta, por si se necesita recordar un comando en espec\'ifico.
+\item Aclarar la funci\'on de los mencionados comandos, con ejemplos.
+\end{itemize}
+
+\section{Comandos}
+
+%Lista de comandos 
+\begin{tabular}{|p{2cm}|p{8cm}|p{5cm}|}
+\hline
+Comando & Descripci\'on & Ejemplo \\
+\hline
+man & Comando b\'asico para ver las funciones de los mismos comandos & man ls \\
+\hline
+mkdir & Crea una carpeta seg\'un el nombre que le pongas
+ &  mkdir CarpetaNueva \\
+\hline
+rmdir &  Borra una carpeta vac\'ia &
+ rmdir CarpetaNueva \\
+\hline
+cd & Permite entrar a las distintas carpetas &  cd Documentos, cd /home/Hugo/Juegos/Xbox \\
+\hline
+pwd & Nos dice la direcci\'on del directorio en el que nos encontramos & \\
+\hline
+ls & Muestra el contenido de una carpeta & \\
+\hline
+ls -l & Muestra el contenido de la carpeta, pero de manera m\'as detallada (permisos, tamaño, \'ultima fecha de modificaci\'on, etc) & \\
+\hline
+file & Nos dice el tipo de archivo & cd Canci\'on \\
+\hline
+cp & Copia un archivo o un directorio, pudiendo darle un nombre nuevo & cp Fender Squier \\
+\hline
+mv & Mueve directorios o archivos, pudiendo darle nombre nuevo & mv c1 programas, mv c1 CarpetaNueva/NombreNuevodec1 \\
+\hline
+rm & Borra archivos o carpetas no vac\'ias & rm horario, rm Juegos \\
+\hline
+touch & Crea un archivo en blanco & touch readme \\
+\hline
+vi & Editor de texto, crea archivos de texto o edita & vi CancionNueva \\
+\hline
+cat & Ver el contenido de un archivo de texto (si es largo s\'olo se ve la \'ultima p\'agina) & cat CancionNueva \\
+\hline
+less & Ver el contenido de un archivo (sirve para archivos largos, navegamos con las flechas) & less CancionNueva \\
+\hline
+chmod & Cambia permisos, quita (+) o permite (-), usuario (u), grupo(g) u otros (o) & chmod u+r CancionNueva \\
+\hline
+ls -ld & Ver permisos de una carpeta & ls -ld CarpetaNueva \\
+\hline
+history & Muestra el historial de lo que se ha estado haciendo & \\
+\hline
+clear & Quita el texto de lo que has estado haciendo en la terminal & \\
+\hline
+\end{tabular} 
+
+\end{document}
+

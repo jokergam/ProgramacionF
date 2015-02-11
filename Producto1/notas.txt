@@ -1,0 +1,25 @@
+Este es un manual de comandos para linux, describiendo su funcion y un ejemplo
+ESTRUCTURA:
+Comando;       Descripcion  ;                          Ejemplo
+
+*man;comando basico para ver las funciones de los mismos comandos;man ls
+*mkdir; crea una carpeta segun el nombre que le pongas; mkdir CarpetaNueva
+*rmdir; borra una carpeta vacia; rmdir CarpetaNueva
+*cd; permite entrar a las distintas carpetas; cd Documentos, cd /home/Hugo/Juegos/Xbox
+*pwd; nos dice la direccion del directorio en el que nos encontramos; 
+*ls; muestra el contenido de una carpeta;
+*ls -l; muestra el contenido de la carpeta, pero de manera mas detallada (permisos, tamaño, ultima fecha de modificacion, etc);
+*~; abreviacion para el directorio principal; cd ~/Juegos (cd /home/Hugo/Juegos)
+*cp; copia un archivo o un directorio, pudiendo darle un nombre nuevo; cp Fender Squier
+*mv; mueve directorios o archivos, pudiendo darle nombre nuevo; mv c1 programas, mv c1 CarpetaNueva/NombreNuevodec1
+*rm; borra archivos o carpetas no vacias; rm horario, rm Juegos
+*touch; crea un archivo en blanco; touch readme
+*vi; editor de texto, crea archivos de texto o edita; vi CancionNueva
+*cat; ver el texto de un archivo de texto (si es largo solo se ve la ultima pagina); cat CancionNueva
+*less; ver el texto de un archivo (sirve para archivos largos, navegamos con las flechas); less CancionNueva
+*chmod; cambia permisos, quita (+) o permite (-), usuario (u), grupo(g) u otros (o); chmod u+r CancionNueva
+*ls -ld; ver permisos de una carpeta; ls -ld CarpetaNueva
+*history; muestra el historial de lo que se ha estado haciendo;
+*clear; quita el texto de lo que has estado haciendo en la terminal;
+ 
+          
