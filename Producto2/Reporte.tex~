@@ -1,0 +1,35 @@
+%Reporte sobre compiladores e interpretadores, y lenguajes de programacion
+\documentclass[notitlepage,12pt]{article}
+
+%El documento estara en español, usar paquete en español
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+%Permite colores
+\usepackage{color}
+%topmatter (titulo, autor, fecha)
+\title{Manual de comandos de bash para Linux}
+\author{Hugo Valenzuela Chaparro}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%Resumen
+\section{Compiladores e interpretadores}
+La funci\'on de los {\color{blue} interpretadores} es de interpretar, literalmente, es decir, ejecutan un programa directamente del c\'odigo sin necesidad de hacer un archivo ejecutable. Por otro lado, los {\color{red} compiladores} lo que hacen es traducir el c\'odigo a el lenguaje m\'aquina, creando un ejecutable el cual la m\'aquina ejecutar\'a. Por esa raz\'on cuando se modifica el c\'odigo de un programa y no se compila, el ejecutable sigue con la misma func\'on, por su parte, cuando se modifica el de c\'odigo de un interpretador, cambia la funci\'on a lo que se modific\'o.
+
+\section{Comparaciones entre lenguajes de programaci\'on}
+\begin{tabular}{|p{2cm}|p{3cm}|p{2cm}|p{2cm}|p{1cm}|}
+\hline
+{\bf{Nombre}} & {\bf{Paradigma}} & {\bf{Creadores}} & {\bf{Año de aparici\'on}} & {\bf{Ext. de archivo}} \\
+\hline
+ANSI C & Imperativo  & Dennis Ritchie  & 1972  & .c \\
+\hline
+mkdir & Crea una carpeta seg\'un el nombre que le pongas & a ver pues & fierro pues & simon \\
+\hline
+
+
+\end{tabular} 
+
+\end{document}
