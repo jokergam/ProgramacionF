@@ -1,0 +1,132 @@
+%Reporte sobre los programas del produto 3
+\documentclass[notitlepage,12pt]{article}
+
+%El documento estara en español, usar paquete en español
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+%Permite colores
+%Permite incorporar imagenes
+\usepackage{graphicx}
+\usepackage{color}
+%topmatter (titulo, autor, fecha)
+\title{Iniciando con Fortran}
+\author{Hugo de Jes\'us Valenzuela Chaparro}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Area de un circulo}
+Con este programa se calcula el \'area de un c\'irculo de radio R que el usuario indica.
+Aqu\'i un ejemplo:
+\begin{verbatim}
+! Area . f90 : Calcula el area de un circulo
+
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Program Circle_area ! Comenzar programa
+
+   Implicit None ! Declaracion de variables
+
+   Real  :: radius , circum , area ! Declarar reales
+
+   Real,PARAMETER  :: PI = 4.0 * atan(1.0) ! Declarar constante real
+
+   Integer :: model_n = 1 ! Declare , assign Ints
+
+   print*, "Escribe el radio del circulo:" ! hablar al usuario
+
+   read*, radius ! leer radio
+
+  circum = 2.0*PI*radius ! calcular circunferencia
+
+  area = radius*radius*PI ! calcular
+
+  print*, "Numero de programa =" , model_n ! Print program number
+
+  print*, "Radio =" , radius ! imprimir radio
+
+  print*, "El perimetro es =" , circum , "unidades" ! imprimir perimetro
+
+  print*, "Area =" , area , "unidades cuadradas" ! imrpimir area
+ End Program Circle_area ! Terminar programa
+\end{verbatim}
+A contunuaci\'on una imagen del programa corriendo:
+
+
+
+\includegraphics[scale=0.5]{1_xAreaCirculo}
+
+\section{Volumen tanque esferico}
+En este programa se calcul\'o el volumen de agua en un tanque esferico de radio R,
+de acuerdo a la altura que este el agua respecto al fondo. Ambos datos fueron introducidos
+por el usuario.
+Aqu\'i el c\'odigo:
+\begin{verbatim}
+! Volumen.f90 : Calcula el volumen del agua que se encuentra 
+! en un tanque esferico a una altura h del suelo
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Program Volumen_esfera ! comenzar pograma
+
+   Implicit None ! Declaracion de variables
+
+   Real  :: radio , volumen , altura   ! Declarar reales
+
+   Real,PARAMETER  :: PI = 4.0 * atan(1.0) ! Declar constaste
+
+   Integer :: model_n = 2 ! Declarar entero con valor dado
+
+   
+   !Pedir datos
+   ! hablar al usuario
+   print*, "Escribe el radio de la esfera (mayor o igual que cero):" o
+   read*, radio
+   print*, "Escribe la altura a la que esta el agua desde el piso &
+   & o fondo del tanque esferico"   
+   read*, altura
+
+   IF (altura <= (2.0*radio)) THEN
+     ! calcular el volumen del agua en el tanque   
+     volumen = (PI/3.0)*(altura*altura)*((3.0*radio)-altura)
+   
+   ELSE
+       print*, "Verifica que los datos sean consistentes"
+        STOP
+   END IF
+  
+
+
+  print*, "Numero de programa =" , model_n ! Print program number
+  print*, "El radio del tanque esferico es" , radio !radio
+  print*, "La altura del agua respecto al fondo del tanque es" , altura !altura
+  print*, "El volumen que se encuentra en el tanque esferico a &
+  & esa altura es =" , volumen , "unidades cubicas" 
+
+ End Program Volumen_esfera ! Terminar programa
+\end{verbatim}
+Imagen del programa corriendo:
+
+
+
+\includegraphics[scale=0.5]{2_xVolumenTanque}
+
+\section{jeje}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ \end{document}

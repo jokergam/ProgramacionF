@@ -1,0 +1,38 @@
+ ! Limits . f90 : Determina la presicion de la maquina, presicion sencilla *4
+
+
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Program Limits
+
+   Implicit None
+
+   Integer :: i , n
+
+   Real  :: epsilon_m , one
+   Integer :: model_n = 42 ! Declare , assign Ints
+   n=60 ! Establece el numero de iteraciones
+
+   ! Dar valores iniciales :
+
+   epsilon_m = 1.0
+
+  one = 1.0
+
+  ! calcular cada paso con DO-LOOP e imprimir
+
+  !  Se ejecutara 60 veces de acuerdo a i
+
+  !  Incrementado de 1 a n (debido a n=60)
+  print*, "Numero de programa =" , model_n ! Print program number
+  do i = 1, n , 1 ! Comienza el loop
+
+    epsilon_m = epsilon_m / 2.0 ! reduce epsilon m
+
+    one = 1.0 + epsilon_m !  calcula de nuevo one
+
+    print*, i , one , epsilon_m !  imprimir valores
+
+  end do ! terminar loop cuando  i>n
+
+ End Program Limits 

@@ -1,0 +1,327 @@
+%Reporte sobre los programas del produto 3
+\documentclass[notitlepage,12pt]{article}
+
+%El documento estara en español, usar paquete en español
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+%Permite colores
+%Permite incorporar imagenes
+\usepackage{graphicx}
+\usepackage{color}
+%topmatter (titulo, autor, fecha)
+\title{Iniciando con Fortran}
+\author{Hugo de Jes\'us Valenzuela Chaparro}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Area de un circulo}
+Con este programa se calcula el \'area de un c\'irculo de radio R que el usuario indica.
+Aqu\'i un ejemplo:
+\begin{verbatim}
+! Area . f90 : Calcula el area de un circulo
+
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Program Circle_area ! Comenzar programa
+
+   Implicit None ! Declaracion de variables
+
+   Real  :: radius , circum , area ! Declarar reales
+
+   Real,PARAMETER  :: PI = 4.0 * atan(1.0) ! Declarar constante real
+
+   Integer :: model_n = 1 ! Declare , assign Ints
+
+   print*, "Escribe el radio del circulo:" ! hablar al usuario
+
+   read*, radius ! leer radio
+
+  circum = 2.0*PI*radius ! calcular circunferencia
+
+  area = radius*radius*PI ! calcular
+
+  print*, "Numero de programa =" , model_n ! Print program number
+
+  print*, "Radio =" , radius ! imprimir radio
+
+  print*, "El perimetro es =" , circum , "unidades" ! imprimir perimetro
+
+  print*, "Area =" , area , "unidades cuadradas" ! imrpimir area
+ End Program Circle_area ! Terminar programa
+\end{verbatim}
+A contunuaci\'on una imagen del programa corriendo:
+
+
+
+\includegraphics[scale=0.5]{1_xAreaCirculo}
+
+\section{Volumen tanque esf\'erico}
+En este programa se calcul\'o el volumen de agua en un tanque esf\'erico de radio R,
+de acuerdo a la altura que este el agua respecto al fondo. Ambos datos fueron introducidos
+por el usuario.
+Aqu\'i el c\'odigo:
+\begin{verbatim}
+! Volumen.f90 : Calcula el volumen del agua que se encuentra 
+! en un tanque esferico a una altura h del suelo
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Program Volumen_esfera ! comenzar pograma
+
+   Implicit None ! Declaracion de variables
+
+   Real  :: radio , volumen , altura   ! Declarar reales
+
+   Real,PARAMETER  :: PI = 4.0 * atan(1.0) ! Declar constaste
+
+   Integer :: model_n = 2 ! Declarar entero con valor dado
+
+   
+   !Pedir datos
+   ! hablar al usuario
+   print*, "Escribe el radio de la esfera (mayor o igual que cero):" o
+   read*, radio
+   print*, "Escribe la altura a la que esta el agua desde el piso &
+   & o fondo del tanque esferico"   
+   read*, altura
+
+   IF (altura <= (2.0*radio)) THEN
+     ! calcular el volumen del agua en el tanque   
+     volumen = (PI/3.0)*(altura*altura)*((3.0*radio)-altura)
+   
+   ELSE
+       print*, "Verifica que los datos sean consistentes"
+        STOP
+   END IF
+  
+
+
+  print*, "Numero de programa =" , model_n ! Print program number
+  print*, "El radio del tanque esferico es" , radio !radio
+  print*, "La altura del agua respecto al fondo del tanque es" , altura !altura
+  print*, "El volumen que se encuentra en el tanque esferico a &
+  & esa altura es =" , volumen , "unidades cubicas" 
+
+ End Program Volumen_esfera ! Terminar programa
+\end{verbatim}
+Imagen del programa corriendo:
+
+
+
+\includegraphics[scale=0.5]{2_xVolumenTanque}
+
+\section{Presici\'on Sencilla *4}
+Este programa sirve para ver la presici\'on sencilla *4
+de la m\'aquina en los c\'alculos.
+Aqu\'i el c\'odigo:
+\begin{verbatim}
+! Limits . f90 : Determina la presicion de la maquina, 
+ ! presicion sencilla *4
+
+
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Program Limits
+
+   Implicit None
+
+   Integer :: i , n
+
+   Real *4 :: epsilon_m , one
+   Integer :: model_n = 41 ! Declare , assign Ints
+   n=60 ! Establece el numero de iteraciones
+
+   ! Dar valores iniciales :
+
+   epsilon_m = 1.0
+
+  one = 1.0
+
+  ! calcular cada paso con DO-LOOP e imprimir
+
+  !  Se ejecutara 60 veces de acuerdo a i
+
+  !  Incrementado de 1 a n (debido a n=60)
+  print*, "Numero de programa =" , model_n !Print program number
+  do i = 1, n , 1 ! Comienza el loop
+
+    epsilon_m = epsilon_m / 2.0 ! reduce epsilon m
+
+    one = 1.0 + epsilon_m !  calcula de nuevo one
+
+    print*, i , one , epsilon_m !  imprimir valores
+
+  end do ! terminar loop cuando  i>n
+
+ End Program Limits 
+\end{verbatim}
+Imagen del programa corriendo:
+
+\includegraphics[scale=0.4]{4_1_xPresicionSencilla_4}
+
+\section{Presici\'on sencilla real}
+En este programa se ve la presici\'on sencilla
+real de la m\'aquina.
+Aqu\'i el c\'odigo:
+\begin{verbatim}
+! Limits . f90 : Determina la presicion de la maquina, 
+ ! presicion sencilla *4
+
+
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Program Limits
+
+   Implicit None
+
+   Integer :: i , n
+
+   Real  :: epsilon_m , one
+   Integer :: model_n = 42 ! Declare , assign Ints
+   n=60 ! Establece el numero de iteraciones
+
+   ! Dar valores iniciales :
+
+   epsilon_m = 1.0
+
+  one = 1.0
+
+  ! calcular cada paso con DO-LOOP e imprimir
+
+  !  Se ejecutara 60 veces de acuerdo a i
+
+  !  Incrementado de 1 a n (debido a n=60)
+  print*, "Numero de programa =" , model_n ! Print program number
+  do i = 1, n , 1 ! Comienza el loop
+
+    epsilon_m = epsilon_m / 2.0 ! reduce epsilon m
+
+    one = 1.0 + epsilon_m !  calcula de nuevo one
+
+    print*, i , one , epsilon_m !  imprimir valores
+
+  end do ! terminar loop cuando  i>n
+
+ End Program Limits 
+\end{verbatim}
+Imagen del programa corriendo:
+
+\includegraphics[scale=0.4]{4_2_xPresicionSencilla_Real}
+
+\section{Funciones instr\'insecas}
+Este programa sirve para ejemplificar c\'omo y
+para qu\'e se usan las funciones instr\'insecas
+de Fortran.
+Aqu\'i el c\'odigo:
+\begin{verbatim}
+! Math . f90 : ejemplos de algunas funciones de Fortran
+
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Program math ! Comenzar programa
+    ! Declaracion de variables4   
+    Real *8 :: x =-1.0 , y=0.2 , z=0 , arccos, log, i, a
+    Integer :: model_n = 6 ! Declare , assign Ints
+   
+   a=ABS(x)
+   i =SQRT(a)
+   arccos=ACOS(y)
+   
+   
+   
+   print*, "Numero de programa =" , model_n !Print program number
+   print*, "La raiz cuadrada de -1 es: +-" , i , "i"
+   print*, "El arcoseno de 0.2 es:" , arccos
+   print*, "El logaritmo de 0 no esta definido"
+   
+ End Program math ! Terminar programa
+\end{verbatim}
+Imagen del programa corriendo:
+
+\includegraphics[scale=0.5]{6_xmath}
+
+\section{Funciones definidas por el usuario}
+Este programa sirve para ilustrar c\'omo se definen funciones
+en Fortran y c\'omo se llaman en el programa principal.
+Aqu\'i el c\'odigo:
+\begin{verbatim}
+! Function . f90 : Llama a una funcion definida por el usuario
+
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Real *8 Function f (x,y)
+
+   Implicit None
+
+   Real *8 :: x, y
+
+   f = 1.0 + sin (x*y )
+
+ End Function f
+
+ 
+
+ Program Main
+
+  Implicit None
+
+  Real *8 :: Xin =0.25 , Yin =2. , c , f ! declarations ( also f)
+  Integer :: model_n = 7 ! Declare , assign Ints
+  c = f ( Xin , Yin )
+  print*, "Numero de programa =" , model_n ! Print program number
+  write ( * , * ) "f(Xin, Yin) = " , c
+
+ End Program Main 
+\end{verbatim}
+Imagen del programa corriendo:
+
+\includegraphics[scale=0.5]{7_xfuncion}
+
+\section{Subrutinas}
+Este programa ilustrar c\'omo se hace una subrutina
+y se llama en el programa principal.
+Aqu\'i en c\'odigo:
+\begin{verbatim}
+! Subroutine . f90 : Muestra como se llama una subrutina
+ ! −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+
+ Subroutine g(x, y, ans1 , ans2 )
+
+   Implicit None
+
+   Real (8) :: x , y , ans1 , ans2 ! Declarar variables
+
+   ans1 = sin (x*y) + 1. ! Usar funcion instrinseca
+
+   ans2 = ans1**2
+
+ End Subroutine g
+
+ !
+
+ Program Main ! Demos the CALL
+
+   Implicit None
+
+   Real *8 :: Xin =0.25 , Yin =2.0 , Gout1 , Gout2
+   Integer :: model_n = 8 ! Declare , assign Ints
+   call g( Xin , Yin , Gout1 , Gout2 ) ! Llamar la subrutina
+   
+    print*, "Numero de programa =" , model_n !Print program number
+
+   write ( * , *) "Las respuestas son: " , Gout1 , Gout2
+
+ End Program Main
+\end{verbatim}
+Imagen del programa corriendo:
+
+\includegraphics[scale=0.5]{8_xsubrutina}
+
+
+
+
+
+
+ \end{document}
