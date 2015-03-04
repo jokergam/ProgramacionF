@@ -1,0 +1,23 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with http://maxima-online.org ] */
+
+/* [wxMaxima: comment start ]
+This solution online http://maxima-online.org/?inc=r369585891
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+f(x):= log(cos(x));
+P4(x):=taylor(f(x), x, 0, 4);
+P7(x):=taylor(f(x), x, 0, 7);
+P9(x):=taylor(f(x), x, 0, 9);
+P14(x):=taylor(f(x), x, 0, 14);
+fortran(P4(x));
+fortran(P7(x));
+fortran(P9(x));
+fortran(P14(x));
+tex(P4(x));
+tex(P7(x));
+tex(P9(x));
+tex(P14(x));
+plot2d ([P4(x),P7(x),P9(x),P14(x),f(x)], [x, -%pi/2, %pi/2], [y, -4, 4],[color, green, blue, black, magenta, red],[legend, "T4", "T7", "T9", "T14", "Log(cos(x))"],[axes,true], [xlabel,"X"] , [ylabel,"Y"]);
+/* [wxMaxima: input   end   ] */

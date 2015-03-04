@@ -1,0 +1,26 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with http://maxima-online.org ] */
+
+/* [wxMaxima: comment start ]
+This solution online http://maxima-online.org/?inc=r14654229
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+f(x):= sin(x);
+P1(x):=taylor(f(x), x, 0, 1);
+P3(x):=taylor(f(x), x, 0, 3);
+P5(x):=taylor(f(x), x, 0, 5);
+P7(x):=taylor(f(x), x, 0, 7);
+fortran(P1(x));
+fortran(P3(x));
+fortran(P5(x));
+fortran(P7(x));
+tex(P1(x));
+tex(P3(x));
+tex(P5(x));
+tex(P7(x));
+plot2d ([f(x),P1(x),P3(x),P5(x),P7(x)], [x, -%pi, %pi],
+[color, red, blue, black, magenta, green],
+[legend, "y=sin(x)", "y=P1(x)", "y=P3(x)", "y=P5(x)", "y=P7(x)"],
+[axes,true], [xlabel,"X"] , [ylabel,"Y"]);
+/* [wxMaxima: input   end   ] */
