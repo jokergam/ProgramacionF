@@ -1,0 +1,100 @@
+!************************************************  
+  !This program plots projectile motion of an object.  
+  !The program requires user input for initial velocity   
+  !and angle of the object.The algorithm uses a time   
+  !step of 0.01 second i.e. it calculates object's  
+  !location in the x and y plane every 0.01 second.  
+  !**********By: Waleed Ishaque, 2013**************  
+  program projectile_plot  
+       implicit none  
+       !Defining constants:  
+       real, parameter :: pi = 4.0*atan(1.0) 
+       real :: u, a, t, a_grados, my, mx, ft, Vx, Vy, FA  
+       real, parameter :: g = 9.81  
+       real:: x(150),y(150)  
+          integer :: i 
+
+       !where g is gravity, pi is "pi"   
+       !u is object's initial velocity   
+       !a is object's initial angle (grades)
+       !t is time during the simulation   
+       !x and y are arrays with 150 rows   
+       !Seek user input   
+       write(*,*) 'Enter angle of projectile in grades (Real)'   
+       read *, a_grados   
+       write(*,*) 'Enter the inicial velocity of projectile in m/s (Real)'   
+       read *, u   
+       !Convert angle to radians   
+       a = (a_grados*pi)/180.0   
+       !calculating the components of the velocity in x (Vx) and y (Vy)
+       IF (a_grados == 90.0) THEN
+       Vx=0.0
+       Vy=u
+       ELSE IF (a_grados == 0.0) THEN
+       Vx=0.0
+       Vy=0.0
+       ELSE
+       Vx=u*cos(a)
+       Vy=u*sin(a)
+       END IF
+        
+   !calculate the time that the object is in the air, the time is the same used
+   !in x and y components
+   ft=(2.0*Vy)/g
+ 
+  
+   !calculate maximun height
+   my=(Vy**2)/19.62
+   
+   !IF (a_grados == 0.0) THEN
+   !mx=0.0
+   !ELSE IF (a_grados == 90.0) THEN
+   !mx=0.0
+   !ELSE IF (mx < 0.0) THEN
+   !mx=0.0
+   !ELSE
+   mx=ft*Vx
+   print*,"agarra cosa x3333",mx
+   !END IF
+
+   !Print results 
+   print*, "inicial velocity:", u,"m/s"
+   print*, "angle of projectile (grades)", a_grados
+   print*, "The total time of flight is", ft, "s"
+   print*, "The maximum height is", my,"m"
+   !print*, "The total displacement in x direction is", mx,"m"
+    
+       !open .dat file and start writing on it using the algorithm   
+       open(1, file='proj.dat')   
+         
+       
+       do i=1,3000 
+            
+            !displacement of object in x and y direction   
+            t = (float(i)*0.01)   
+            x(i) = Vx*t   
+            y(i) = (Vy*t)-(4.905*t*t)   
+            !write output in file "proj.dat" for plotting   
+            write(1,*) x(i), y(i)   
+            !kill the loop when the object hits the ground   
+            IF (y(i)<0) exit  
+       end do 
+       close(1)   
+       !close file 
+
+   
+    !displacement in x until the object hits the ground
+   mx=x(i)
+    print*, "The total displacement in x direction is", mx,"m"
+  
+   
+  
+  
+   
+ 
+ 
+ 
+  
+  
+    
+  end program projectile_plot 
