@@ -1,0 +1,180 @@
+!constantes
+MODULE constantes
+ IMPLICIT NONE
+ real, parameter :: pi = 4.0*atan(1.0), g=9.81 
+ INTEGER, PARAMETER :: npts=5000
+!Coeficiente de arrastre de la esfera
+REAL,PARAMETER :: dc=0.47
+END MODULE constantes
+!Subrutina para trayectoria sin friccion
+SUBROUTINE SinFriccion(x0,y0,u,a_grados,mx,my,ft)
+  
+      
+       USE constantes
+       implicit none  
+       !Defining constants:  
+      
+       real :: u, a, t, a_grados, my, mx, ft, Vx, Vy, FA,x0,y0  
+       
+       real:: x(150),y(150)  
+          integer :: i 
+
+       !where g is gravity, pi is "pi"   
+       !u is object's initial velocity   
+       !a is object's initial angle (grades)
+       !t is time during the simulation   
+       !x and y are arrays with 150 rows   
+       !Seek user input   
+       !write(*,*) 'Ingresa el angulo de lanzamiento (Real)'   
+       !read *, a_grados   
+       !write(*,*) 'Ingresa la velocidad inical del proyectil en m/s (Real)'   
+       !read *, u   
+       !Convertir angulo a radianes  
+       a = (a_grados*pi)/180.0   
+       !Calcular componentes de la velocidad en x (Vx) e y (Vy)
+       IF (a_grados == 90.0) THEN
+       Vx=0.0
+       Vy=u
+       ELSE IF (a_grados == 0.0) THEN
+       Vx=0.0
+       Vy=0.0
+       ELSE
+       Vx=u*cos(a)
+       Vy=u*sin(a)
+       END IF
+        
+   !Calcular el tiempo que el objeto esta en el aire, siendo el mismo
+   !en las componentes x e y
+   ft=(2.0*Vy)/g
+ 
+  
+   !calcular altura maxima
+   my=(Vy**2)/19.62
+   
+   !Print results 
+  ! print*, "Velocidad inicial:", u,"m/s"
+   !print*, "Angulo de lanzamiento (grados):", a_grados
+  ! print*, "Tiempo total de vuelo:", ft, "s"
+  ! print*, "La altura maxima es:", my,"m"
+   
+    
+       !open .dat file and start writing on it using the algorithm   
+       open(1, file='sinfrinccion.dat')   
+         
+       
+       do i=1,npts 
+           
+            !displacement of object in x and y direction   
+            t = (float(i)*0.1)   
+            x(i) = x0+ Vx*t   
+            y(i) = y0+ (Vy*t)-(4.905*t*t)   
+            !write output in file "proj.dat" for plotting   
+            write(1,*) x(i), y(i)   
+            !write (2,1001) x(i), y(i)
+            !1001 format (f11.5, f11.5)
+            !kill the loop when the object hits the ground   
+            IF (y(i)<0) exit  
+       end do 
+       close(1)   
+       !close file 
+
+   
+  !Desplazamiento en la direccion x hasta que el objeto toca el suelo
+   mx=x(i)
+   ! print*, "El desplazamiento total en la direccion x es:", mx,"m"
+  
+
+
+
+END SUBROUTINE SinFriccion
+!Subrutina para trayectoria con friccion del aire
+SUBROUTINE ConFriccion (x0,y0,v0,a_grados)
+    USE constantes
+    IMPLICIT NONE
+REAL,DIMENSION (0:npts) :: x, y,vx, vy, ay, ax, t
+REAL :: x0,y0,v0,a_grados
+REAL :: masa,esfera,a
+a = (a_grados*pi)/180.0
+PRINT*, "Escribe la masa de la esfera"
+READ*, masa
+PRINT*, "Escribe el radio de la esfera"
+READ*, esfera
+
+!Condiciones iniciales
+x(0)=x0
+y(0)=y0
+vx(0)=v0*cos(a)
+vy(o)=v0*sin(b)
+
+
+
+
+
+
+
+END SUBROUTINE ConFriccion
+
+
+
+
+
+
+
+
+
+
+!Programa maestro
+PROGRAM ProyectilesFriccion
+        USE constantes
+        IMPLICIT NONE
+        REAL :: v0,a_grados,mx,my,ft,x0,y0
+    
+PRINT*, "Este programa calcula el alcance en x y y en un tiro parabolico, &
+& para cuando hay friccion y cuando no la hay"
+PRINT*, "Ingresa la posicion inicial x0 y y0 (m), luego el angulo inicial (grados) y &
+& la velocidad inicial (m/s), respectivamente"
+READ*,x0,y0,a_grados,v0
+
+!Llamar subrutinas
+CALL SinFriccion(x0,y0,v0,a_grados,mx,my,ft)
+CALL SinFriccion(x0,y0,v0,a_grados)
+
+
+PRINT*, "Sin friccion, los resultados son:"
+
+PRINT*, "El desplazamiento total en x es",mx
+PRINT*, "La altura total en y es", my
+PRINT*, "El tiempo total de vuelo es" ,ft
+PRINT*, "-------------------------------------------------------"
+END PROGRAM ProyectilesFriccion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

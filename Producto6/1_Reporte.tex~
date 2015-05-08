@@ -1,0 +1,30 @@
+%Reporte sobre la actividad del producto 4
+\documentclass[notitlepage,12pt]{article}
+
+%El documento estara en español, usar paquete en español
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+%Permite colores
+%Permite incorporar imagenes
+\usepackage{graphicx}
+\usepackage{color}
+%Escribir formulas matematicas
+\usepackage{amsmath}
+%topmatter (titulo, autor, fecha)
+\title{Movimiento de proyectiles}
+\author{Hugo de Jes\'us Valenzuela Chaparro}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+
+
+
+
+
+
+
+\end{document}
